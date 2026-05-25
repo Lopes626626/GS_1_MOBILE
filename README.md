@@ -1,6 +1,8 @@
 # 🛸 Missão Espacial - Centro de Controle de Telemetria
 
-O **Missão Espacial** é uma plataforma integrada de monitoramento e telemetria desenvolvida para o gerenciamento de sistemas operacionais, sensores computacionais e alertas críticos em missões aeroespaciais. O projeto foi construído utilizando uma arquitetura robusta de microsserviços para o ecossistema de backend e um painel dinâmico multiplataforma no frontend.
+O **Missão Espacial** é uma plataforma integrada de monitoramento e telemetria desenvolvida para o gerenciamento de sistemas operacionais, sensores computacionais e alertas críticos em missões aeroespaciais.
+
+O projeto foi construído utilizando uma arquitetura moderna com **microsserviços**, integração entre **backend e frontend**, persistência de dados local e comunicação via API REST.
 
 Este projeto compõe os requisitos de entrega da **Global Solution** da **FIAP**.
 
@@ -8,37 +10,43 @@ Este projeto compõe os requisitos de entrega da **Global Solution** da **FIAP**
 
 # 👥 Integrantes do Grupo
 
-* **Rafael Lopes Bestilleiro Benedetti** - RM: **554781**
-* **Breno Ferreira e SIlva** - RM: **555503**
-* **Vinicius de Abreu Fernandes** - RM: **558184**
+| Nome | RM |
+|---|---|
+| Rafael Lopes Bestilleiro Benedetti | 554781 |
+| Breno Ferreira e Silva | 555503 |
+| Vinicius de Abreu Fernandes | 558184 |
 
 ---
 
 # 🛠️ Arquitetura e Tecnologias
 
-## Backend
+## 🔙 Backend
 
-* **Java 17** com **Spring Boot**
-* **Spring Data JPA** para persistência de dados
-* **Banco de Dados H2** em modo arquivo (`./data/missaodb`) para armazenamento local
-* **Lombok** para redução de código boilerplate
-* **Maven** para gerenciamento de dependências
-
-## Frontend Mobile / Web
-
-* **React Native** com **Expo Framework** (executando nativamente via Expo Web)
-* **TypeScript** para tipagem estática e segurança em tempo de compilação
-* **Axios** como cliente HTTP para consumo assíncrono da API REST
+- Java 17
+- Spring Boot
+- Spring Data JPA
+- Banco de Dados H2
+- Lombok
+- Maven
 
 ---
 
-# 📂 Estrutura de Pastas de Ambas as Stacks
+## 🌐 Frontend Mobile / Web
 
-O ecossistema é dividido estritamente conforme as melhores práticas de desenvolvimento corporativo.
+- React Native
+- Expo Framework
+- TypeScript
+- Axios
 
 ---
 
-## 1️⃣ Backend (Spring Boot)
+# 📂 Estrutura do Projeto
+
+O ecossistema foi dividido seguindo boas práticas de desenvolvimento corporativo.
+
+---
+
+# 1️⃣ Backend (Spring Boot)
 
 ```text
 src/main/java/br/com/fiap/missaoespacial/
@@ -53,19 +61,21 @@ src/main/java/br/com/fiap/missaoespacial/
     └── SistemaMonitoradoService.java
 ```
 
-### 📌 Descrição dos Arquivos
+---
+
+## 📌 Descrição dos Arquivos
 
 | Arquivo | Função |
 |---|---|
 | `MissaoespacialApplication.java` | Classe principal responsável pela inicialização da aplicação |
 | `SistemaMonitoradoController.java` | Rotas REST para cadastro e listagem dos sistemas monitorados |
 | `SistemaMonitorado.java` | Entidade JPA mapeada no banco de dados |
-| `SistemaMonitoradoRepository.java` | Interface de persistência de dados |
-| `SistemaMonitoradoService.java` | Camada responsável pelas regras de negócio |
+| `SistemaMonitoradoRepository.java` | Interface responsável pela persistência |
+| `SistemaMonitoradoService.java` | Camada de regras de negócio |
 
 ---
 
-## 2️⃣ Frontend (React Native + TypeScript)
+# 2️⃣ Frontend (React Native + TypeScript)
 
 ```text
 src/
@@ -81,48 +91,65 @@ src/
     └── statusOperacional.ts
 ```
 
-### 📌 Descrição dos Arquivos
+---
+
+## 📌 Descrição dos Arquivos
 
 | Arquivo | Função |
 |---|---|
-| `SistemaCard.tsx` | Componente visual responsável pela renderização dos dados |
+| `SistemaCard.tsx` | Componente visual dos sistemas monitorados |
 | `index.ts` | Exportação centralizada dos componentes |
-| `sistema.ts` | Interface do contrato de dados do sistema monitorado |
-| `api.ts` | Configuração centralizada da instância Axios |
-| `sistemaService.ts` | Serviços responsáveis pelas chamadas HTTP |
+| `sistema.ts` | Interface do contrato de dados |
+| `api.ts` | Configuração da instância Axios |
+| `sistemaService.ts` | Serviços HTTP da aplicação |
 | `statusOperacional.ts` | Tipagem dos estados operacionais |
 
 ---
 
 # ⚡ Configuração e Execução
 
-## ▶️ Como Executar o Backend (Java)
+# ▶️ Executando o Backend
 
-Certifique-se de possuir os seguintes requisitos instalados:
+## 📋 Pré-requisitos
 
-* **JDK 17**
-* **Maven**
+Certifique-se de possuir instalado:
 
-### Passos para execução
+- JDK 17
+- Maven
 
-1. Abra o projeto em sua IDE de preferência:
-   * IntelliJ IDEA
-   * Eclipse
-   * VS Code
+---
 
-2. Localize o arquivo:
+## ▶️ Passos para Execução
+
+### 1. Abra o projeto em uma IDE
+
+Exemplos:
+
+- IntelliJ IDEA
+- Eclipse
+- VS Code
+
+---
+
+### 2. Localize o arquivo principal
 
 ```text
 MissaoespacialApplication.java
 ```
 
-3. Execute a aplicação clicando com o botão direito e selecionando:
+---
+
+### 3. Execute a aplicação
+
+Clique com o botão direito no arquivo e selecione:
 
 ```text
 Run
 ```
 
-4. O servidor iniciará automaticamente na porta:
+---
+
+### 4. O servidor iniciará em:
 
 ```text
 http://localhost:8080
@@ -130,15 +157,17 @@ http://localhost:8080
 
 ---
 
-# 🗄️ Acesso ao Banco H2
+# 🗄️ Banco de Dados H2
 
-Abra o navegador e acesse:
+Após iniciar o backend, acesse:
 
 ```text
 http://localhost:8080/h2-console
 ```
 
-### Configuração da conexão
+---
+
+## 🔗 Configuração da Conexão
 
 ```text
 JDBC URL: jdbc:h2:file:./data/missaodb;AUTO_SERVER=TRUE
@@ -148,9 +177,9 @@ Password: (deixar em branco)
 
 ---
 
-# 🌐 Como Executar o Frontend (React Native + Expo)
+# 🌐 Executando o Frontend
 
-Abra o terminal e navegue até a pasta raiz do frontend.
+Abra o terminal na pasta raiz do frontend.
 
 ---
 
@@ -186,28 +215,164 @@ Após iniciar o Expo, pressione:
 w
 ```
 
-Isso abrirá automaticamente o projeto utilizando o **Expo Web** no navegador.
+O projeto será aberto automaticamente utilizando o **Expo Web**.
+
+---
+
+# 📡 Endpoints Disponíveis da API
+
+A API trabalha com requisições e respostas em formato JSON.
+
+---
+
+# 1️⃣ Cadastrar Sistema
+
+## 🔗 Endpoint
+
+```http
+POST http://localhost:8080/sistemas
+```
+
+---
+
+## 📥 Corpo da Requisição (JSON)
+
+```json
+{
+  "nome": "Suporte de Vida Primário",
+  "statusOperacional": "ATIVO",
+  "nivelEnergia": 98.5,
+  "responsavel": "Equipe Alfa"
+}
+```
+
+---
+
+## ✅ Resposta Esperada
+
+```http
+201 Created
+```
+
+---
+
+# 2️⃣ Listar Todos os Sistemas
+
+## 🔗 Endpoint
+
+```http
+GET http://localhost:8080/sistemas
+```
+
+---
+
+## ✅ Resposta de Sucesso
+
+```http
+200 OK
+```
+
+---
+
+## 📤 Exemplo de Resposta
+
+```json
+[
+  {
+    "id": 1,
+    "nome": "Suporte de Vida Primário",
+    "statusOperacional": "ATIVO",
+    "nivelEnergia": 98.5,
+    "responsavel": "Equipe Alfa"
+  }
+]
+```
+
+---
+
+# 🧪 Testes da API no Postman
+
+## 📌 Exemplo de Cadastro no Postman
+
+### Método
+
+```text
+POST
+```
+
+### URL
+
+```text
+http://localhost:8080/sistemas
+```
+
+### Headers
+
+```text
+Content-Type: application/json
+```
+
+### Body → raw → JSON
+
+```json
+{
+  "nome": "Suporte de Vida Primário",
+  "statusOperacional": "ATIVO",
+  "nivelEnergia": 98.5,
+  "responsavel": "Equipe Alfa"
+}
+```
 
 ---
 
 # 📡 Funcionalidades do Sistema
 
-* Cadastro de sistemas monitorados
-* Monitoramento de status operacionais
-* Integração completa entre frontend e backend
-* Persistência local utilizando banco H2
-* Consumo de API REST com Axios
-* Estrutura modular e escalável
-* Interface multiplataforma via React Native + Expo
+- Cadastro de sistemas monitorados
+- Monitoramento operacional
+- Integração completa entre frontend e backend
+- Persistência local com H2
+- API REST com Spring Boot
+- Consumo de API via Axios
+- Estrutura modular e escalável
+- Interface multiplataforma com React Native + Expo
 
 ---
 
 # 🚀 Objetivo do Projeto
 
-O objetivo do projeto é simular um centro de controle de telemetria espacial capaz de monitorar sistemas críticos em tempo real, permitindo organização, escalabilidade e integração entre diferentes tecnologias modernas do mercado.
+O objetivo do projeto é simular um centro de controle de telemetria espacial capaz de monitorar sistemas críticos em tempo real, permitindo:
+
+- Organização operacional
+- Escalabilidade da aplicação
+- Monitoramento de recursos
+- Integração entre tecnologias modernas
+- Simulação de ambientes críticos aeroespaciais
 
 ---
 
-# 🎓 Projeto Acadêmico
+# 📚 Tecnologias Utilizadas
 
-Projeto desenvolvido para fins acadêmicos como entrega da **Global Solution - FIAP**.
+| Tecnologia | Finalidade |
+|---|---|
+| Java 17 | Backend |
+| Spring Boot | API REST |
+| Spring Data JPA | Persistência |
+| H2 Database | Banco de Dados |
+| Maven | Dependências |
+| React Native | Frontend |
+| Expo | Execução Web/Mobile |
+| TypeScript | Tipagem |
+| Axios | Requisições HTTP |
+
+---
+
+# ✅ Status do Projeto
+
+```text
+✔️ Projeto Finalizado
+✔️ Backend Funcional
+✔️ Frontend Integrado
+✔️ API REST Operacional
+✔️ Banco H2 Configurado
+✔️ Integração Axios Funcionando
+```
