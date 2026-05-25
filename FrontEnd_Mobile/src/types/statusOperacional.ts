@@ -1,0 +1,1 @@
+export type StatusOperacional = 'ATIVO' | 'STANDBY' | 'FALHA' | 'MANUTENCAO' | 'INATIVO';
