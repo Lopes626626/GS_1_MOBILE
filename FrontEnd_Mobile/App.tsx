@@ -29,7 +29,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>🚀 MISSION CONTROL</Text>
+        <Text style={styles.title}>🚀 MISSÃO DE CONTROLE</Text>
         <Text style={styles.subtitle}>Painel de Telemetria Integrado</Text>
       </View>
 
